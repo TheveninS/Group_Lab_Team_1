@@ -26,19 +26,204 @@ public class ProfileManagement extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblTitleManagement = new javax.swing.JLabel();
+        lblFullName = new javax.swing.JLabel();
+        fieldFullName = new javax.swing.JTextField();
+        lblFacultyID = new javax.swing.JLabel();
+        fieldFaculty = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        fieldEmail = new javax.swing.JTextField();
+        lblPhone = new javax.swing.JLabel();
+        fieldPhoneNumber = new javax.swing.JTextField();
+        lblDepartment = new javax.swing.JLabel();
+        fieldDepartment = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        fieldLocation = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnAddProfile = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+
+        lblTitleManagement.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitleManagement.setText("Profile Management");
+
+        lblFullName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblFullName.setText("Full Name");
+
+        lblFacultyID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblFacultyID.setText("Faculty ID");
+
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblEmail.setText("Email");
+
+        lblPhone.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPhone.setText("Phone Number");
+
+        lblDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDepartment.setText("Department");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("Office Location");
+
+        fieldLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldLocationActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Full Name", "Faculty ID", "Email", "Phone Number", "Department", "Location"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        btnAddProfile.setText("Add Profile");
+
+        btnDelete.setText("Delete Profile");
+
+        btnView.setText("View Profile");
+
+        btnUpdate.setText("Update Profile");
+
+        btnBack.setText("<<Back");
+
+        btnLogout.setText("Logout");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitleManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(63, 63, 63)
+                                    .addComponent(btnAddProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnDelete)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblDepartment, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(fieldFullName)
+                                        .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fieldDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGap(52, 52, 52)
+                                                    .addComponent(lblFacultyID))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGap(40, 40, 40)
+                                                    .addComponent(lblPhone)))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(fieldFaculty)
+                                                .addComponent(fieldPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGap(33, 33, 33)
+                                                    .addComponent(jLabel1))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addGap(6, 6, 6)
+                                                    .addComponent(btnView)))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(fieldLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(256, 256, 256)
+                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitleManagement)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFullName)
+                    .addComponent(fieldFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFacultyID)
+                    .addComponent(fieldFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmail)
+                    .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPhone)
+                    .addComponent(fieldPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(fieldDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDepartment))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddProfile)
+                    .addComponent(btnDelete)
+                    .addComponent(btnView)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnBack))
+                .addGap(18, 18, 18)
+                .addComponent(btnLogout)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fieldLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldLocationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldLocationActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddProfile;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnView;
+    private javax.swing.JTextField fieldDepartment;
+    private javax.swing.JTextField fieldEmail;
+    private javax.swing.JTextField fieldFaculty;
+    private javax.swing.JTextField fieldFullName;
+    private javax.swing.JTextField fieldLocation;
+    private javax.swing.JTextField fieldPhoneNumber;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblDepartment;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblFacultyID;
+    private javax.swing.JLabel lblFullName;
+    private javax.swing.JLabel lblPhone;
+    private javax.swing.JLabel lblTitleManagement;
     // End of variables declaration//GEN-END:variables
 }
