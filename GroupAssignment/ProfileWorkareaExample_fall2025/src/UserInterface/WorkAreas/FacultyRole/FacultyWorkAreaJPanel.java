@@ -177,12 +177,9 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnCourseManagementIdentifyResourceAssetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCourseManagementIdentifyResourceAssetsActionPerformed
         // TODO add your handling code here:
-        CardSequencePanel.removeAll();
-
-    CourseManagementJPanel cmp = new CourseManagementJPanel(business, facultyProfile, CardSequencePanel);  
-
-    CardSequencePanel.add("Course Management", cmp);
-    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+        CourseManagementJPanel cmp = new CourseManagementJPanel(business, facultyProfile, CardSequencePanel);
+    CardSequencePanel.add("CourseManagement", cmp);
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).show(CardSequencePanel, "CourseManagement");
 
     }//GEN-LAST:event_btnCourseManagementIdentifyResourceAssetsActionPerformed
 
