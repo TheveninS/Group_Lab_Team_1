@@ -3,19 +3,94 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UserInterface.WorkAreas.FacultyRole.FacultyRoleWorkResp02;
+import Business.Profiles.FacultyProfile;
+import Business.Person.Person;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Hammad
  */
+
 public class ProfileManagement extends javax.swing.JPanel {
 
     /**
      * Creates new form ProfileManagement
      */
-    public ProfileManagement() {
+private JPanel userProcessContainer;
+private FacultyProfile facultyProfile;
+private Person person;
+
+    public ProfileManagement(JPanel userProcessContainer, FacultyProfile fp) {
         initComponents();
+         this.userProcessContainer = userProcessContainer;
+         this.facultyProfile = fp;
+         
+         this.person = fp.getPerson();
+        populateTable();
+        loadFacultyData();
     }
+    
+    
+    
+private void populateTable() {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0); // Clear existing rows
+    
+    // Add current faculty member's data (logged-in user)
+    Object[] row1 = new Object[6];
+    row1[0] = person.getPersonId(); // Full Name
+    row1[1] = "FAC-001"; // Faculty ID
+    row1[2] = person.getPersonId() + "@university.edu"; // Email
+    row1[3] = "555-0100"; // Phone Number
+    row1[4] = "Information Systems"; // Department
+    row1[5] = "Room 401"; // Office Location
+    model.addRow(row1);
+    
+    // Add more faculty data
+    Object[] row2 = new Object[6];
+    row2[0] = "Dr. Michael Anderson";
+    row2[1] = "FAC-002";
+    row2[2] = "m.anderson@university.edu";
+    row2[3] = "555-0201";
+    row2[4] = "Computer Science";
+    row2[5] = "Room 305";
+    model.addRow(row2);
+    
+    Object[] row3 = new Object[6];
+    row3[0] = "Dr. Emily Rodriguez";
+    row3[1] = "FAC-003";
+    row3[2] = "e.rodriguez@university.edu";
+    row3[3] = "555-0302";
+    row3[4] = "Data Science";
+    row3[5] = "Room 412";
+    model.addRow(row3);
+    
+    Object[] row4 = new Object[6];
+    row4[0] = "Dr. James Chen";
+    row4[1] = "FAC-004";
+    row4[2] = "j.chen@university.edu";
+    row4[3] = "555-0403";
+    row4[4] = "Information Systems";
+    row4[5] = "Room 508";
+    model.addRow(row4);
+}
+
+private void loadFacultyData() {
+    // Pre-fill the form fields with current faculty data
+    fieldFullName.setText(person.getPersonId());
+    fieldFaculty.setText("FAC-" + person.getPersonId());
+    fieldEmail.setText(person.getPersonId() + "@university.edu");
+    fieldPhoneNumber.setText("555-0100");
+    fieldDepartment.setText("Information Systems");
+    fieldLocation.setText("Room 401");
+    
+    // Make Faculty ID read-only
+    fieldFaculty.setEditable(false);
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +122,7 @@ public class ProfileManagement extends javax.swing.JPanel {
         btnUpdate = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
 
         lblTitleManagement.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitleManagement.setText("Profile Management");
@@ -56,6 +132,12 @@ public class ProfileManagement extends javax.swing.JPanel {
 
         lblFacultyID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblFacultyID.setText("Faculty ID");
+
+        fieldFaculty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldFacultyActionPerformed(evt);
+            }
+        });
 
         lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblEmail.setText("Email");
@@ -89,16 +171,53 @@ public class ProfileManagement extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         btnAddProfile.setText("Add Profile");
+        btnAddProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddProfileActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete Profile");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnView.setText("View Profile");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setText("Update Profile");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
+        btnClear.setText("Clear Fields");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -111,49 +230,47 @@ public class ProfileManagement extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTitleManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(63, 63, 63)
-                                    .addComponent(btnAddProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnDelete)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblDepartment, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(fieldFullName)
-                                        .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(fieldDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(52, 52, 52)
-                                                    .addComponent(lblFacultyID))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(40, 40, 40)
-                                                    .addComponent(lblPhone)))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(fieldFaculty)
-                                                .addComponent(fieldPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(33, 33, 33)
-                                                    .addComponent(jLabel1))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                    .addGap(6, 6, 6)
-                                                    .addComponent(btnView)))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(fieldLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(btnAddProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDelete)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnView)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnClear))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblDepartment, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(fieldFullName)
+                                    .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fieldDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(52, 52, 52)
+                                                .addComponent(lblFacultyID))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(40, 40, 40)
+                                                .addComponent(lblPhone)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(fieldFaculty)
+                                            .addComponent(fieldPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(33, 33, 33)
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(fieldLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(256, 256, 256)
                         .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -191,7 +308,8 @@ public class ProfileManagement extends javax.swing.JPanel {
                     .addComponent(btnDelete)
                     .addComponent(btnView)
                     .addComponent(btnUpdate)
-                    .addComponent(btnBack))
+                    .addComponent(btnBack)
+                    .addComponent(btnClear))
                 .addGap(18, 18, 18)
                 .addComponent(btnLogout)
                 .addContainerGap(54, Short.MAX_VALUE))
@@ -202,10 +320,203 @@ public class ProfileManagement extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldLocationActionPerformed
 
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+    fieldFullName.setText("");
+    fieldFaculty.setText("");
+    fieldEmail.setText("");
+    fieldPhoneNumber.setText("");
+    fieldDepartment.setText("");
+    fieldLocation.setText("");
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnAddProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProfileActionPerformed
+        // TODO add your handling code here:
+         String fullName = fieldFullName.getText().trim();
+    String email = fieldEmail.getText().trim();
+    String phone = fieldPhoneNumber.getText().trim();
+    String department = fieldDepartment.getText().trim();
+    String location = fieldLocation.getText().trim();
+    
+    // Check if any field is empty (except Faculty ID)
+    if (fullName.isEmpty() || email.isEmpty() || 
+        phone.isEmpty() || department.isEmpty() || location.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter all the details!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // Find the lowest available Faculty ID
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    int rowCount = model.getRowCount();
+    
+    // Collect all existing IDs
+    java.util.Set<Integer> existingIds = new java.util.HashSet<>();
+    for (int i = 0; i < rowCount; i++) {
+        String id = model.getValueAt(i, 1).toString();
+        // Extract number from "FAC-XXX"
+        int num = Integer.parseInt(id.substring(4));
+        existingIds.add(num);
+    }
+    
+    // Find the lowest available ID starting from 1
+    int newIdNumber = 1;
+    while (existingIds.contains(newIdNumber)) {
+        newIdNumber++;
+    }
+    
+    String newFacultyId = "FAC-" + String.format("%03d", newIdNumber);
+    
+    // Add to table
+    Object[] row = new Object[6];
+    row[0] = fullName;
+    row[1] = newFacultyId;
+    row[2] = email;
+    row[3] = phone;
+    row[4] = department;
+    row[5] = location;
+    
+    model.addRow(row);
+    
+    // Show success message
+    JOptionPane.showMessageDialog(this, "Profile added successfully!\nFaculty ID: " + newFacultyId);
+    
+    // Clear the fields
+    fieldFullName.setText("");
+    fieldFaculty.setText("");
+    fieldEmail.setText("");
+    fieldPhoneNumber.setText("");
+    fieldDepartment.setText("");
+    fieldLocation.setText("");
+    }//GEN-LAST:event_btnAddProfileActionPerformed
+
+    private void fieldFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldFacultyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldFacultyActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+         int selectedRow = jTable1.getSelectedRow();
+    
+    if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(this, "Please select a faculty member to delete!");
+        return;
+    }
+    
+    // Get the faculty name for confirmation
+    String facultyName = jTable1.getValueAt(selectedRow, 0).toString();
+    
+    // Confirm deletion
+    int confirm = JOptionPane.showConfirmDialog(this, 
+        "Are you sure you want to delete " + facultyName + "?", 
+        "Confirm Delete", 
+        JOptionPane.YES_NO_OPTION);
+    
+    if (confirm == JOptionPane.YES_OPTION) {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.removeRow(selectedRow);
+        JOptionPane.showMessageDialog(this, "Profile deleted successfully!");
+    }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+         int selectedRow = jTable1.getSelectedRow();
+    
+    if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(this, "Please select a faculty member first!");
+        return;
+    }
+    
+    // Get data from selected row
+    String fullName = jTable1.getValueAt(selectedRow, 0).toString();
+    String facultyId = jTable1.getValueAt(selectedRow, 1).toString();
+    String email = jTable1.getValueAt(selectedRow, 2).toString();
+    String phone = jTable1.getValueAt(selectedRow, 3).toString();
+    String department = jTable1.getValueAt(selectedRow, 4).toString();
+    String location = jTable1.getValueAt(selectedRow, 5).toString();
+    
+    // Create simple message
+    String message = "Full Name: " + fullName + "\n" +
+                    "Faculty ID: " + facultyId + "\n" +
+                    "Email: " + email + "\n" +
+                    "Phone: " + phone + "\n" +
+                    "Department: " + department + "\n" +
+                    "Location: " + location;
+    
+    JOptionPane.showMessageDialog(this, message, "Faculty Profile", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        
+   int selectedRow = jTable1.getSelectedRow();
+    
+    if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(this, "Please select a profile to update!");
+        return;
+    }
+    
+    // Get data from text fields
+    String fullName = fieldFullName.getText().trim();
+    String email = fieldEmail.getText().trim();
+    String phone = fieldPhoneNumber.getText().trim();
+    String department = fieldDepartment.getText().trim();
+    String location = fieldLocation.getText().trim();
+    
+    // Check if any field is empty (EXCEPT Faculty ID - it's auto-generated)
+    if (fullName.isEmpty() || email.isEmpty() || 
+        phone.isEmpty() || department.isEmpty() || location.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please fill all the fields!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // Get the Faculty ID from the table (don't use the text field)
+    String facultyId = jTable1.getValueAt(selectedRow, 1).toString();
+    
+    // Update the selected row
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setValueAt(fullName, selectedRow, 0);
+    model.setValueAt(facultyId, selectedRow, 1);  // Keep original Faculty ID
+    model.setValueAt(email, selectedRow, 2);
+    model.setValueAt(phone, selectedRow, 3);
+    model.setValueAt(department, selectedRow, 4);
+    model.setValueAt(location, selectedRow, 5);
+    
+    JOptionPane.showMessageDialog(this, "Profile updated successfully!");
+    
+    // Clear fields after update
+    fieldFullName.setText("");
+    fieldFaculty.setText("");
+    fieldEmail.setText("");
+    fieldPhoneNumber.setText("");
+    fieldDepartment.setText("");
+    fieldLocation.setText("");
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        ((java.awt.CardLayout) userProcessContainer.getLayout()).show(userProcessContainer, "faculty");
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+         int confirm = JOptionPane.showConfirmDialog(this, 
+        "Are you sure you want to logout?", 
+        "Confirm Logout", 
+        JOptionPane.YES_NO_OPTION);
+    
+    if (confirm == JOptionPane.YES_OPTION) {
+        userProcessContainer.removeAll();
+        ((java.awt.CardLayout) userProcessContainer.getLayout()).next(userProcessContainer);
+        JOptionPane.showMessageDialog(this, "Logged out successfully!");
+    }
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddProfile;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnUpdate;

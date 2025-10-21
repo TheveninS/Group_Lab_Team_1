@@ -10,12 +10,13 @@
  */
 package UserInterface.WorkAreas.FacultyRole;
 
+
 import Business.Business;
 import UserInterface.WorkAreas.AdminRole.ManagePersonnelWorkResp.ManagePersonsJPanel;
 import javax.swing.JPanel;
 import UserInterface.WorkAreas.FacultyRole.FacultyRoleWorkResp02.CourseManagementJPanel;
+import UserInterface.WorkAreas.FacultyRole.FacultyRoleWorkResp02.ProfileManagement;  
 import Business.Profiles.FacultyProfile;
-
 /**
  *
  * @author kal
@@ -185,6 +186,9 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnProfileManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileManagementActionPerformed
         // TODO add your handling code here:
+         ProfileManagement pm = new ProfileManagement(CardSequencePanel, facultyProfile);
+    CardSequencePanel.add("ProfileManagement", pm);
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).show(CardSequencePanel, "ProfileManagement");
 
   
     }//GEN-LAST:event_btnProfileManagementActionPerformed

@@ -9,6 +9,7 @@ import Business.Profiles.FacultyProfile;
 import javax.swing.JPanel;
 import Business.University.CourseSchedule.CourseOffer;
 import Business.University.CourseSchedule.CourseOffer;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -380,8 +381,16 @@ if (newStatus != null && !newStatus.trim().isEmpty()) {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-         CardSequencePanel.remove(this);
-    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+         int confirm = JOptionPane.showConfirmDialog(this, 
+        "Are you sure you want to logout?", 
+        "Confirm Logout", 
+        JOptionPane.YES_NO_OPTION);
+    
+    if (confirm == JOptionPane.YES_OPTION) {
+        CardSequencePanel.remove(this);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+        JOptionPane.showMessageDialog(this, "Logged out successfully!");
+    }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
