@@ -59,6 +59,7 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
         PasswordTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnSignUp = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         CardSequencePanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -67,6 +68,7 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
         actionsidejpanel.setBackground(new java.awt.Color(0, 153, 153));
         actionsidejpanel.setMinimumSize(new java.awt.Dimension(200, 200));
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +76,7 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("User Name");
 
         UserNameTextField.setText("admin");
@@ -85,12 +88,22 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Password");
 
+        btnSignUp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSignUp.setText("Sign Up");
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignUpActionPerformed(evt);
+            }
+        });
+
+        btnLogout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
             }
         });
 
@@ -101,15 +114,19 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
             .addGroup(actionsidejpanelLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(actionsidejpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(UserNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(PasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(UserNameTextField)
+                    .addComponent(PasswordTextField)
                     .addGroup(actionsidejpanelLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSignUp)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addGroup(actionsidejpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(actionsidejpanelLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         actionsidejpanelLayout.setVerticalGroup(
             actionsidejpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +142,10 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(actionsidejpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLogout)
+                .addContainerGap())
         );
 
         SplitHomeArea.setLeftComponent(actionsidejpanel);
@@ -134,7 +154,7 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 153, 255));
-        jLabel3.setText("Education Going Digital .... Info 5100 ");
+        jLabel3.setText("Digital University System");
         CardSequencePanel.add(jLabel3, "card2");
 
         SplitHomeArea.setRightComponent(CardSequencePanel);
@@ -183,7 +203,8 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
         }
 
        if (profile instanceof FacultyProfile) {
-            facultyworkarea = new FacultyWorkAreaJPanel(business, CardSequencePanel);
+           FacultyProfile fp = (FacultyProfile) profile;
+            facultyworkarea = new FacultyWorkAreaJPanel(business, fp, CardSequencePanel);
             CardSequencePanel.removeAll();
             CardSequencePanel.add("faculty", facultyworkarea);
             ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
@@ -204,6 +225,17 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
     CardSequencePanel.add("SignUp", signuppanel);
     ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
     }//GEN-LAST:event_btnSignUpActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        
+    CardSequencePanel.removeAll();
+    UserNameTextField.setText("");
+    PasswordTextField.setText("");
+    CardSequencePanel.add(jLabel3, "welcome");
+    CardSequencePanel.revalidate();
+    CardSequencePanel.repaint();
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,6 +281,7 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
     private javax.swing.JSplitPane SplitHomeArea;
     private javax.swing.JTextField UserNameTextField;
     private javax.swing.JPanel actionsidejpanel;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnSignUp;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
