@@ -9,8 +9,9 @@ import Business.Person.PersonDirectory;
 import Business.Profiles.EmployeeDirectory;
 import Business.Profiles.StudentDirectory;
 import Business.Profiles.FacultyDirectory;
-
 import Business.UserAccounts.UserAccountDirectory;
+import Business.University.Department.Department;
+
 
 /**
  *
@@ -25,6 +26,7 @@ public class Business {
     UserAccountDirectory useraccountdirectory;
     StudentDirectory studentdirectory;
     FacultyDirectory facultydirectory;
+    Department department; 
     
 
 
@@ -36,6 +38,7 @@ public class Business {
         useraccountdirectory = new UserAccountDirectory();
         studentdirectory = new StudentDirectory();
         facultydirectory =  new FacultyDirectory(this);
+        department = new Department("Information Systems");
 
 
     }
@@ -61,4 +64,8 @@ public class Business {
         return facultydirectory;
     }
 
+    
+    public Department getDepartment(){  
+    return department;
+}
 }

@@ -4,6 +4,9 @@
  */
 package Business.University.CourseSchedule;
 
+import Business.University.CourseCatalog.Course;  
+import Business.University.CourseCatalog.CourseCatalog;  
+
 import java.util.ArrayList;
 
 /**

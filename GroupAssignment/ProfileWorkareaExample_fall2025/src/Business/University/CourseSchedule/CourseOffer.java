@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.University.CourseSchedule;
+import Business.University.CourseCatalog.Course; 
+import Business.Profiles.FacultyProfile;  
+import Business.Profiles.FacultyAssignment; 
 
 import java.util.ArrayList;
 

@@ -4,6 +4,8 @@
  */
 package Business.University.CourseSchedule;
 
+import Business.University.CourseCatalog.Course;
+
 /**
  *
  * @author Hammad

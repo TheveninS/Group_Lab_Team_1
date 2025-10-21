@@ -3,7 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.University.Department;
-
+import Business.University.CourseCatalog.Course;  
+import Business.University.CourseCatalog.CourseCatalog;  
+import Business.University.CourseSchedule.CourseLoad;  
+import Business.University.CourseSchedule.CourseOffer;  
+import Business.University.CourseSchedule.CourseSchedule; 
+import Business.University.Degree.Degree;  
+import Business.Person.PersonDirectory;  
+import Business.Profiles.StudentDirectory;  
+import Business.Profiles.StudentProfile;       
 import java.util.HashMap;
 
 /**
@@ -15,8 +23,8 @@ public class Department {
     CourseCatalog coursecatalog;
     PersonDirectory persondirectory;
     StudentDirectory studentdirectory;
-    FacultyDirectory facultydirectory;
-    EmployerDirectory employerdirectory;
+    
+   
     Degree degree;
 
     HashMap<String, CourseSchedule> mastercoursecatalog;
@@ -25,7 +33,7 @@ public class Department {
         name = n;
         mastercoursecatalog = new HashMap<>();
         coursecatalog = new CourseCatalog(this);
-        studentdirectory = new StudentDirectory(this); //pass the department object so it stays linked to it
+        studentdirectory = new StudentDirectory();
         persondirectory = new PersonDirectory();
         degree = new Degree("MSIS");
         
