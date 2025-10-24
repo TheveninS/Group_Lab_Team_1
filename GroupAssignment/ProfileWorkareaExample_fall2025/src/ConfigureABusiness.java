@@ -23,6 +23,7 @@ import Business.University.CourseCatalog.Course;
 import Business.University.CourseCatalog.CourseCatalog;
 import Business.University.CourseSchedule.CourseSchedule;
 import Business.University.CourseSchedule.CourseOffer;
+import Business.University.CourseSchedule.CourseLoad;
 
 /**
  *
@@ -69,7 +70,7 @@ class ConfigureABusiness {
         
         CourseOffer offer1 = fall2025.newCourseOffer("INFO 5100");
         offer1.generatSeats(40);
-        offer1.AssignAsTeacher(facultyprofile0);  // Assign faculty to course
+        offer1.AssignAsTeacher(facultyprofile0);
         
         CourseOffer offer2 = fall2025.newCourseOffer("INFO 6205");
         offer2.generatSeats(35);
@@ -78,12 +79,35 @@ class ConfigureABusiness {
         CourseOffer offer3 = fall2025.newCourseOffer("INFO 6150");
         offer3.generatSeats(30);
         offer3.AssignAsTeacher(facultyprofile0);
-   
+        
+        // CREATE TEST STUDENTS
+        Person person010 = persondirectory.newPerson("Alice Johnson");
+        Person person011 = persondirectory.newPerson("Bob Smith");
+        Person person012 = persondirectory.newPerson("Carol White");
+
+        StudentProfile studentprofile1 = studentdirectory.newStudentProfile(person010);
+        StudentProfile studentprofile2 = studentdirectory.newStudentProfile(person011);
+        StudentProfile studentprofile3 = studentdirectory.newStudentProfile(person012);
+
+        // ENROLL STUDENTS IN INFO 5100
+        CourseLoad alice_fall = studentprofile1.newCourseLoad("Fall2025");
+        offer1.assignEmptySeat(alice_fall);
+
+        CourseLoad bob_fall = studentprofile2.newCourseLoad("Fall2025");
+        offer1.assignEmptySeat(bob_fall);
+
+        CourseLoad carol_fall = studentprofile3.newCourseLoad("Fall2025");
+        offer1.assignEmptySeat(carol_fall);
+
         // Create User accounts that link to specific profiles
         UserAccountDirectory uadirectory = business.getUserAccountDirectory();
+        
         UserAccount ua3 = uadirectory.newUserAccount(employeeprofile0, "admin", "****");
         UserAccount ua4 = uadirectory.newUserAccount(studentprofile0, "adam", "****");
         UserAccount ua5 = uadirectory.newUserAccount(facultyprofile0, "faculty", "****");
+        UserAccount ua6 = uadirectory.newUserAccount(studentprofile1, "alice", "****");
+        UserAccount ua7 = uadirectory.newUserAccount(studentprofile2, "bob", "****");
+        UserAccount ua8 = uadirectory.newUserAccount(studentprofile3, "carol", "****");
         
         return business;
     }

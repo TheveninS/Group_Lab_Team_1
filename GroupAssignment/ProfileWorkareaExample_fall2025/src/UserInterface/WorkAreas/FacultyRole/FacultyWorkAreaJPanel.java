@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import UserInterface.WorkAreas.FacultyRole.FacultyRoleWorkResp02.CourseManagementJPanel;
 import UserInterface.WorkAreas.FacultyRole.FacultyRoleWorkResp02.ProfileManagement;  
 import Business.Profiles.FacultyProfile;
+import UserInterface.WorkAreas.FacultyRole.FacultyRoleWorkResp02.StudentManagement;
 /**
  *
  * @author kal
@@ -195,12 +196,9 @@ public class FacultyWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnStudentManagementIdentifyEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentManagementIdentifyEventsActionPerformed
         // TODO add your handling code here:
-        CardSequencePanel.removeAll();
-        //    IdentifyEventTypes iet= new IdentifyEventTypes(businessunit, CardSequencePanel);
-
-        //    CardSequencePanel.add("IdentifyEventTypes", iet);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-        //((java.awt.CardLayout)CardSequencePanel.getLayout()).show(CardSequencePanel, "IdentifyEventTypes");
+        StudentManagement sm = new StudentManagement(CardSequencePanel, facultyProfile, business);
+    CardSequencePanel.add("StudentManagement", sm);
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).show(CardSequencePanel, "StudentManagement");
 }//GEN-LAST:event_btnStudentManagementIdentifyEventsActionPerformed
 
     private void btnPerformanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerformanceActionPerformed
