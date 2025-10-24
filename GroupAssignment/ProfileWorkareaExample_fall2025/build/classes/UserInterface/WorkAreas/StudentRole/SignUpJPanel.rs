@@ -1,0 +1,4 @@
+UserInterface.WorkAreas.SignUpJPanel
+UserInterface.WorkAreas.SignUpJPanel$1
+UserInterface.WorkAreas.SignUpJPanel$2
+UserInterface.WorkAreas.SignUpJPanel$3
